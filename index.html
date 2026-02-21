@@ -1,143 +1,158 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>For Tanvi 💜</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday Tanvi 💜</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --purple: #bb86fc;
+            --bts-pink: #ffafcc;
+            --dark: #0a0a0a;
+        }
 
-<style>
-body{
-  margin:0;
-  padding:0;
-  height:100vh;
-  overflow:hidden;
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  flex-direction:column;
-  font-family:'Segoe UI',sans-serif;
-  background:linear-gradient(-45deg,#8e2de2,#4a00e0,#ff6ec4,#7873f5);
-  background-size:400% 400%;
-  animation:gradient 12s ease infinite;
-  color:white;
-  text-align:center;
-}
+        body, html {
+            margin: 0; padding: 0; width: 100%; height: 100%;
+            background-color: var(--dark);
+            color: white; font-family: 'Poppins', sans-serif;
+            overflow: hidden; display: flex; justify-content: center; align-items: center;
+        }
 
-@keyframes gradient{
-  0%{background-position:0% 50%;}
-  50%{background-position:100% 50%;}
-  100%{background-position:0% 50%;}
-}
+        /* Animated Floating Hearts Background */
+        .heart-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            z-index: 1; pointer-events: none;
+        }
 
-h1{
-  font-size:45px;
-  text-shadow:0 0 20px #ff6ec4,0 0 40px #fff;
-  animation:fadeIn 3s forwards;
-}
+        .heart {
+            position: absolute; color: var(--purple);
+            animation: float 6s infinite linear; opacity: 0;
+        }
 
-p{
-  max-width:600px;
-  margin:10px;
-  opacity:0;
-  animation:fadeIn 4s forwards;
-  animation-delay:1s;
-}
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(0deg) scale(0); opacity: 0; }
+            50% { opacity: 0.8; }
+            100% { transform: translateY(-10vh) rotate(360deg) scale(1.5); opacity: 0; }
+        }
 
-@keyframes fadeIn{
-  to{opacity:1;}
-}
+        /* Cinematic Glass Card */
+        #content {
+            z-index: 10; text-align: center; cursor: pointer;
+            transition: all 1.5s ease-in-out;
+        }
 
-.heart{
-  font-size:50px;
-  animation:pulse 1s infinite;
-  margin:15px 0;
-}
+        .glass-card {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(20px);
+            padding: 60px 40px; border-radius: 40px;
+            border: 1px solid rgba(187, 134, 252, 0.2);
+            box-shadow: 0 0 80px rgba(187, 134, 252, 0.15);
+        }
 
-@keyframes pulse{
-  0%{transform:scale(1);}
-  50%{transform:scale(1.2);}
-  100%{transform:scale(1);}
-}
+        h1 { 
+            font-family: 'Dancing Script', cursive;
+            font-size: 5rem; margin: 0;
+            background: linear-gradient(to right, #bb86fc, #ffafcc);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
 
-button{
-  padding:12px 25px;
-  border:none;
-  border-radius:30px;
-  font-size:16px;
-  cursor:pointer;
-  background:white;
-  color:#6a11cb;
-  font-weight:bold;
-  transition:0.3s;
-}
+        .date-sub { font-size: 1rem; letter-spacing: 8px; opacity: 0.6; margin-bottom: 20px; }
+        .click-hint { font-size: 0.9rem; margin-top: 30px; letter-spacing: 2px; color: var(--bts-pink); animation: pulse 2s infinite; }
 
-button:hover{
-  transform:scale(1.1);
-}
+        @keyframes pulse { 0%, 100% { opacity: 0.4; } 50% { opacity: 1; } }
 
-#btsImage{
-  position:fixed;
-  bottom:-500px;
-  width:80%;
-  max-width:400px;
-  transition:1.5s ease;
-  border-radius:20px;
-  box-shadow:0 0 30px rgba(255,255,255,0.7);
-}
+        /* BTS Member Pop-ups */
+        .member-img {
+            position: absolute; width: 180px; height: 180px;
+            border-radius: 50%; border: 4px solid var(--purple);
+            box-shadow: 0 0 30px rgba(187, 134, 252, 0.5);
+            opacity: 0; transform: scale(0) rotate(-20deg);
+            transition: all 1s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            object-fit: cover; z-index: 5;
+        }
 
-.showImage{
-  bottom:30px !important;
-}
+        .show-member { opacity: 1; transform: scale(1) rotate(0deg); }
 
-.floating{
-  position:absolute;
-  animation:floatUp 6s linear infinite;
-}
-
-@keyframes floatUp{
-  0%{transform:translateY(100vh);}
-  100%{transform:translateY(-10vh);}
-}
-</style>
+        #final-msg {
+            position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%);
+            font-family: 'Dancing Script', cursive; font-size: 4rem;
+            color: white; display: none; z-index: 20;
+            text-shadow: 0 0 20px var(--purple); width: 100%; text-align: center;
+        }
+    </style>
 </head>
-
 <body>
 
-<h1>TANVI 💜</h1>
+    <div class="heart-bg" id="heart-container"></div>
 
-<p>
-Some people are temporary. <br>
-Some people are lessons. <br><br>
-But you… <br>
-You are my love and my happiness 💜 <br><br>
-This isn't just your birthday… <br>
-It's the day the world became better ✨ <br><br>
-Wish you a very Happy Birthday sweetie 🥰
-</p>
+    <div id="content" class="glass-card" onclick="startMagic()">
+        <div class="date-sub">2003 • 03 • 22</div>
+        <h1 id="main-text">For Tanvi 💜</h1>
+        <div class="click-hint">CLICK TO OPEN YOUR SURPRISE</div>
+    </div>
 
-<div class="heart">💜</div>
+    <div id="bts-gallery">
+        <img class="member-img" style="top:5%; left:5%" src="https://via.placeholder.com/200?text=RM" id="m1">
+        <img class="member-img" style="top:5%; right:5%" src="https://via.placeholder.com/200?text=Jin" id="m2">
+        <img class="member-img" style="top:40%; left:2%" src="https://via.placeholder.com/200?text=Suga" id="m3">
+        <img class="member-img" style="top:40%; right:2%" src="https://via.placeholder.com/200?text=J-Hope" id="m4">
+        <img class="member-img" style="bottom:5%; left:10%" src="https://via.placeholder.com/200?text=Jimin" id="m5">
+        <img class="member-img" style="bottom:5%; right:10%" src="https://via.placeholder.com/200?text=V" id="m6">
+        <img class="member-img" style="top:75%; left:43%" src="https://via.placeholder.com/200?text=Jungkook" id="m7">
+    </div>
 
-<button onclick="reveal()">Open Your Big Surprise 🎁</button>
+    <div id="final-msg">Happy Birthday Sweetie! 💜</div>
 
-<img src="bts.jpg" id="btsImage">
+    <audio id="hbd-music" src="https://www.chosic.com/wp-content/uploads/2021/09/Happy-Birthday-Music-Box.mp3"></audio>
+    <audio id="bts-music" src="https://audio.com/stefania-manterola/audio/bts-boy-with-luv-feat-halsey-official-mv"></audio>
 
-<script>
-function reveal(){
-  document.getElementById("btsImage").classList.add("showImage");
-  // if you add music:
-  // document.getElementById("music").play();
-}
+    <script>
+        // Create 40 Floating Purple Hearts
+        const container = document.getElementById('heart-container');
+        for (let i = 0; i < 40; i++) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '💜';
+            heart.style.left = Math.random() * 100 + 'vw';
+            heart.style.animationDelay = Math.random() * 8 + 's';
+            heart.style.fontSize = (Math.random() * 30 + 10) + 'px';
+            container.appendChild(heart);
+        }
 
-// floating hearts
-setInterval(()=>{
-  let heart=document.createElement("div");
-  heart.className="floating";
-  heart.innerHTML="💜";
-  heart.style.left=Math.random()*100+"vw";
-  heart.style.fontSize=(15+Math.random()*20)+"px";
-  document.body.appendChild(heart);
-  setTimeout(()=>heart.remove(),6000);
-},500);
-</script>
+        function startMagic() {
+            const hbd = document.getElementById('hbd-music');
+            const bts = document.getElementById('bts-music');
+            const mainText = document.getElementById('main-text');
+            const card = document.getElementById('content');
+            const finalMsg = document.getElementById('final-msg');
 
+            // 1. Play Soft Birthday Music Box
+            hbd.play();
+            mainText.innerText = "Happy Birthday Tanvi!";
+            
+            // 2. Transition to Boy With Luv & BTS Members
+            setTimeout(() => {
+                hbd.pause();
+                bts.play();
+                card.style.opacity = '0';
+                card.style.transform = 'scale(0.8)';
+                
+                // Show BTS Members one by one in a circle
+                for (let i = 1; i <= 7; i++) {
+                    setTimeout(() => {
+                        document.getElementById('m' + i).classList.add('show-member');
+                    }, i * 700);
+                }
+
+                // 3. The Final "Sweetie" Surprise
+                setTimeout(() => {
+                    finalMsg.style.display = 'block';
+                    document.body.style.boxShadow = "inset 0 0 100px rgba(187, 134, 252, 0.5)";
+                }, 6000);
+
+            }, 4500); // Wait 4.5 seconds of HBD song then drop the beat
+        }
+    </script>
 </body>
 </html>
