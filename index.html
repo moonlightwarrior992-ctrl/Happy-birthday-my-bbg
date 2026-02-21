@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>For Tanvi 💜</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<style>
+body{
+  margin:0;
+  padding:0;
+  height:100vh;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  font-family:'Segoe UI',sans-serif;
+  background:linear-gradient(-45deg,#8e2de2,#4a00e0,#ff6ec4,#7873f5);
+  background-size:400% 400%;
+  animation:gradient 12s ease infinite;
+  color:white;
+  text-align:center;
+}
+
+@keyframes gradient{
+  0%{background-position:0% 50%;}
+  50%{background-position:100% 50%;}
+  100%{background-position:0% 50%;}
+}
+
+h1{
+  font-size:45px;
+  text-shadow:0 0 20px #ff6ec4,0 0 40px #fff;
+  animation:fadeIn 3s forwards;
+}
+
+p{
+  max-width:600px;
+  margin:10px;
+  opacity:0;
+  animation:fadeIn 4s forwards;
+  animation-delay:1s;
+}
+
+@keyframes fadeIn{
+  to{opacity:1;}
+}
+
+.heart{
+  font-size:50px;
+  animation:pulse 1s infinite;
+  margin:15px 0;
+}
+
+@keyframes pulse{
+  0%{transform:scale(1);}
+  50%{transform:scale(1.2);}
+  100%{transform:scale(1);}
+}
+
+button{
+  padding:12px 25px;
+  border:none;
+  border-radius:30px;
+  font-size:16px;
+  cursor:pointer;
+  background:white;
+  color:#6a11cb;
+  font-weight:bold;
+  transition:0.3s;
+}
+
+button:hover{
+  transform:scale(1.1);
+}
+
+#btsImage{
+  position:fixed;
+  bottom:-500px;
+  width:80%;
+  max-width:400px;
+  transition:1.5s ease;
+  border-radius:20px;
+  box-shadow:0 0 30px rgba(255,255,255,0.7);
+}
+
+.showImage{
+  bottom:30px !important;
+}
+
+.floating{
+  position:absolute;
+  animation:floatUp 6s linear infinite;
+}
+
+@keyframes floatUp{
+  0%{transform:translateY(100vh);}
+  100%{transform:translateY(-10vh);}
+}
+</style>
+</head>
+
+<body>
+
+<h1>TANVI 💜</h1>
+
+<p>
+Some people are temporary. <br>
+Some people are lessons. <br><br>
+But you… <br>
+You are my love and my happiness 💜 <br><br>
+This isn't just your birthday… <br>
+It's the day the world became better ✨ <br><br>
+Wish you a very Happy Birthday sweetie 🥰
+</p>
+
+<div class="heart">💜</div>
+
+<button onclick="reveal()">Open Your Big Surprise 🎁</button>
+
+<img src="bts.jpg" id="btsImage">
+
+<script>
+function reveal(){
+  document.getElementById("btsImage").classList.add("showImage");
+  // if you add music:
+  // document.getElementById("music").play();
+}
+
+// floating hearts
+setInterval(()=>{
+  let heart=document.createElement("div");
+  heart.className="floating";
+  heart.innerHTML="💜";
+  heart.style.left=Math.random()*100+"vw";
+  heart.style.fontSize=(15+Math.random()*20)+"px";
+  document.body.appendChild(heart);
+  setTimeout(()=>heart.remove(),6000);
+},500);
+</script>
+
+</body>
+</html>
